@@ -50,20 +50,31 @@ function createMainWindow() {
     mainWindow.on('close', () => {
         mainWindow = null
     })
+
+    if (debug) {
+        mainWindow.webContents.openDevTools()
+        mainWindow.maximize()
+        require('devtron').install()
+    } 
 }
 
 function createSplashWindow() {
     splashWindow = new window({
         width: 400,
-        minWidth: 400,
         height: 400,
-        minheight: 400
+        resizable: false
     })
     splashWindow.load('/windows/splash.html')
 
     splashWindow.on('close', () => {
         splashWindow = null
     })
+
+    if (debug) {
+        splashWindow.webContents.openDevTools()
+        splashWindow.maximize()
+        require('devtron').install()
+    } 
 }
 
 function makeSingleInstance() {
