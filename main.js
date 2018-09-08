@@ -35,17 +35,20 @@ function initialize() {
 
 function createMainWindow() {
     const windowOptions = {
-        width: 1080,
+        width: 1312,
         minWidth: 680,
-        height: 840,
+        height: 782,
         title: app.getName(),
+        transparent: true,
+        frame: false,
+
         webPreferences: {
             backgroundThorottling: false
         }
     }
 
     mainWindow = new BrowserWindow(windowOptions)
-    mainWindow.loadURL(path.join('file://', __dirname, '/index.html'))
+    mainWindow.loadURL(path.join('file://', __dirname, '/windows/modal.html'))
 
     // Launch fullscreen with DevTools open, usage: npm run debug
     if (debug) {
@@ -58,7 +61,7 @@ function createMainWindow() {
         mainWindow.show()
     })
 
-    mainWindow.on('closed', () => {
+    mainWindow.on('close', () => {
         mainWindow = null
     })
 }
