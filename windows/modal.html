@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +11,36 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
   <link type="text/css" rel="stylesheet" href="./style.css" />
+  <script src="./js/basicBehave.js"></script>
 </head>
+
 <body>
-  <h2>Hello World!</h2>
-  <a id="close">Close this Window</a>
+  <header id="header-container" class="" style="text-align: left;">
+    <img src="./images/ic_app.png" style="width: auto; height: 24px;"></img>
+    <div style="vertical-align: top; display: inline-block; line-height: 24px;">Title</div>
+    <div id="header-button-container">
+      <i id="minimize" class="material-icons header-button">remove</i>
+      <i id="maximize" class="material-icons header-button">crop_din</i>
+      <i id="close" class="material-icons header-button">close</i>
+    </div>
+  </header>
+
+  <div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--12-col mdl-cell--top">
+      profile
+    </div>
+
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--bottom">
+      1
+    </div>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--bottom">
+      2
+    </div>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--bottom">
+      3
+    </div>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--bottom">
+      4
+    </div>
+  </div>
 </body>
