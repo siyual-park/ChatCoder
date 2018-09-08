@@ -6,9 +6,15 @@
 
   <title>Hello, World!</title>
 
+  <link rel="stylesheet" href="../node_modules/material-design-lite/material.min.css">
+  <script src="../node_modules/material-design-lite/material.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
   <link type="text/css" rel="stylesheet" href="./style.css" />
+  <script src="./js/basicBehave.js"></script>
 </head>
-<body>
+<body style="-webkit-app-region: drag;">
   <h2>Splash Window</h2>
-  <a id="close" href="javascript:window.close()">Close this Window</a>
+  <div id="p2" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
+  <button id="close" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" style="-webkit-app-region: no-drag;">Close this Window</button>
 </body>
