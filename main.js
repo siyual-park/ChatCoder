@@ -4,6 +4,8 @@
 const path = require('path')
 const { app, BrowserWindow } = require('electron')
 
+const window = require('./window.js')
+
 if (process.mas) app.setName('ChatCode')
 
 // 메인 윈도우는 GC되지 않도록 글로벌 선언 
@@ -19,8 +21,8 @@ function initialize() {
     app.on('ready', () => {
         createSplashWindow()
         createMainWindow()
-        mainWindow.close()
-        splashWindow.close()
+        //mainWindow.close()
+        //splashWindow.close()
     })
 
     // 모든 창을 닫으면 종료 
@@ -38,28 +40,12 @@ function initialize() {
 }
 
 function createMainWindow() {
-    const windowOptions = {
+    mainWindow = new window({
         width: 1312,
         minWidth: 680,
-        height: 782,
-        title: app.getName(),
-        transparent: true,
-        frame: false,
-
-        webPreferences: {
-            backgroundThorottling: false
-        }
-    }
-
-    mainWindow = new BrowserWindow(windowOptions)
-    mainWindow.loadURL(path.join('file://', __dirname, '/windows/modal.html'))
-
-    // Launch fullscreen with DevTools open, usage: npm run debug
-    if (debug) {
-        mainWindow.webContents.openDevTools()
-        mainWindow.maximize()
-        require('devtron').install()
-    }
+        height: 782
+    })
+    mainWindow.load('/windows/modal.html')
 
     mainWindow.on('close', () => {
         mainWindow = null
@@ -67,29 +53,13 @@ function createMainWindow() {
 }
 
 function createSplashWindow() {
-    const windowOptions = {
+    splashWindow = new window({
         width: 400,
         minWidth: 400,
         height: 400,
-        minheight: 400,
-        title: app.getName(),
-        transparent: true,
-        frame: false,
-
-        webPreferences: {
-            backgroundThorottling: false
-        }
-    }
-
-    splashWindow = new BrowserWindow(windowOptions)
-    splashWindow.loadURL(path.join('file://', __dirname, '/windows/splash.html'))
-
-    // Launch fullscreen with DevTools open, usage: npm run debug
-    if (debug) {
-        splashWindow.webContents.openDevTools()
-        splashWindow.maximize()
-        require('devtron').install()
-    } 
+        minheight: 400
+    })
+    splashWindow.load('/windows/splash.html')
 
     splashWindow.on('close', () => {
         splashWindow = null
