@@ -41,9 +41,12 @@ function initialize() {
 
 function createMainWindow() {
     mainWindow = new window({
-        width: 1312,
-        minWidth: 680,
-        height: 782
+        width: 1280,
+        height: 720,
+
+        resizable: false,
+
+        titleBarStyle: 'customButtonsOnHover'
     })
     mainWindow.load('/windows/modal.html')
 
@@ -60,8 +63,8 @@ function createMainWindow() {
 
 function createSplashWindow() {
     splashWindow = new window({
-        width: 400,
-        height: 400,
+        width: 405,
+        height: 540,
         resizable: false
     })
     splashWindow.load('/windows/splash.html')
