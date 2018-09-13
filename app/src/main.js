@@ -25,10 +25,10 @@ function initialize() {
     
             resizable: false,
     
-            //titleBarStyle: 'customButtonsOnHover'
+            titleBarStyle: 'customButtonsOnHover'
         })
     
-        mainWindow.load('../index.html')
+        mainWindow.load('html/index.html')
     
         mainWindow.on('close', () => {
             mainWindow = null

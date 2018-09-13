@@ -17,6 +17,7 @@ class NoFrameWindow extends BrowserWindow {
         backgroundThorottling: false
       }
     }, option))
+    
   }
 
   load(name) {
