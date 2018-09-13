@@ -6,13 +6,13 @@ const url = require('url')
 const { app } = electron
 const { BrowserWindow } = electron
 
-class window {
+class NoFrameWindow extends BrowserWindow {
   constructor(option) {
-    this.window = new BrowserWindow(Object.assign({
+    super(Object.assign({
       title: app.getName(),
       transparent: true,
       frame: false,
-  
+
       webPreferences: {
         backgroundThorottling: false
       }
@@ -20,16 +20,12 @@ class window {
   }
 
   load(name) {
-    this.window.loadURL(url.format({
+    this.loadURL(url.format({
       pathname: path.join(__dirname, name),
       protocol: 'file:',
       slashes: true,
     }))
   }
-
-  on(name, func) {
-    this.window.on(name, func)
-  }
 }
 
-module.exports = window
+module.exports = NoFrameWindow
