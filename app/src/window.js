@@ -10,7 +10,7 @@ class NoFrameWindow extends BrowserWindow {
   constructor(option) {
     super(Object.assign({
       title: app.getName(),
-      transparent: true,
+      //transparent: true,
       frame: false,
 
       webPreferences: {

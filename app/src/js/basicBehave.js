@@ -10,7 +10,14 @@ window.addEventListener('load', () => {
 
 window.addEventListener('load', () => {
     document.getElementById('maximize').addEventListener('click', () => {
-        win.maximize()
+        console.log(win.isMaximized())
+        if (!win.isMaximized())
+            win.maximize()
+            //document.getElementById('maximize').src = 
+        else {
+            win.unmaximize()
+            console.log(win.isMaximized())
+        }
     })
 }) 
 

@@ -28,7 +28,7 @@ function initialize() {
             titleBarStyle: 'customButtonsOnHover'
         })
     
-        mainWindow.load('html/index.html')
+        mainWindow.load('html/mainWindow.html')
     
         mainWindow.on('close', () => {
             mainWindow = null
