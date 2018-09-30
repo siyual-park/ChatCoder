@@ -3,11 +3,12 @@
 // Electron 모듈 
 const { app } = require('electron')
 
-const noFrameWindow = require('./window.js')
+const {createMainWindow, createLoginWindow} = require('./js/window.js')
 
 if (process.mas) app.setName('ChatCode')
 
-// 메인 윈도우는 GC되지 않도록 글로벌 선언 
+// 메인 윈도우는 GC되지 않도록 글로벌 선언
+let loginWindow = null
 let mainWindow = null
 
 const debug = /--debug/.test(process.argv[2])
@@ -19,24 +20,17 @@ function initialize() {
         return app.quit()
 
     app.on('ready', () => {
-        mainWindow = new noFrameWindow({
-            width: 1280,
-            height: 720,
-    
-            resizable: false,
-    
-            titleBarStyle: 'customButtonsOnHover'
-        })
-    
-        mainWindow.load('html/mainWindow.html')
-    
-        mainWindow.on('close', () => {
-            mainWindow = null
-        })
-    
+        mainWindow = createMainWindow()
+        loginWindow = createLoginWindow()
+        //mainWindow.close()
+        //mainWindow.show()
         if (debug) {
             mainWindow.webContents.openDevTools()
             mainWindow.maximize()
+
+            loginWindow.webContents.openDevTools()
+            loginWindow.maximize()
+
             require('devtron').install()
         }
     })
